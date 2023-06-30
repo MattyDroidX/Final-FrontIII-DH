@@ -1,0 +1,50 @@
+import {createContext, useContext, useEffect, useMemo, useReducer} from "react";
+import {useFetch} from "../../Hooks/useFetch";
+import {GLOBAL_ACTIONS, THEME, USERS_URL} from "./constants";
+
+const initialState = {theme: THEME.LIGHT, data: []}
+
+const globalContextReducer = (state, action) => {
+    const {SWITCH_THEME, UPDATE_USERS} = GLOBAL_ACTIONS
+
+    switch (action.type) {
+        case SWITCH_THEME:
+            return {...state, theme: action.payload}
+        case UPDATE_USERS:
+            return {...state, data: action.payload}
+        default:
+            throw new Error('Invalid action type');
+    }
+}
+
+const ContextGlobal = createContext();
+
+export const ContextProvider = ({children}) => {
+    const [globalState, dispatchGlobalState] = useReducer(globalContextReducer, initialState);
+    const contextValue = useMemo(() => ({
+        globalState,
+        dispatchGlobalState
+    }), [globalState, dispatchGlobalState])
+    const users = useFetch(USERS_URL);
+
+    useEffect(() => {
+        console.log("calling global state dispatcher")
+        console.log("users", users)
+
+        if (users) {
+            dispatchGlobalState({type: "UPDATE_USERS", payload: users.data})
+        }
+    }, [users])
+
+    useEffect(() => {
+        localStorage.setItem("theme", globalState.theme)
+    }, [globalState.theme]);
+
+    return (
+        <ContextGlobal.Provider value={contextValue}>
+            {children}
+        </ContextGlobal.Provider>
+    );
+};
+
+export const useGlobalContext = () => useContext(ContextGlobal)

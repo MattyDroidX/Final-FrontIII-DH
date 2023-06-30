@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+:root {
+    --color-primario: #A5A5A5;
+    --color-secundario: #222;
+    --color-nav-fondo: #FFFFFF;
+    --color-nav-dark: #2a2a2a;
+    --color-fondo: #FFFFFF;
+    --color-fondo-dark: #1A1A1B;
+    --color-texto: #000000;
+    --color-texto-dark: #FFFFFF;
+    --color-fondo-body: #DAE0E6;
+    --color-fondo-body-dark: #1A1A1B;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-nav-dark);
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+a {
+    color: var(--color-primario);
+    text-decoration: none;
+    margin: 5px;
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--color-secundario);
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.card:hover {
+    border: 0.5px solid rgb(206, 217, 142);
+}
+
+.card-grid {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    width: 90vw;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 0 auto 5rem;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    display: table;
+    border: 1px solid #ccc;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+body.light {
+    background-color: var(--color-primario);
+}
+
+body.dark {
+    background-color: var(--color-fondo-body-dark);
+}
+
+
+h1.light {
+    color: var(--color-texto);
+}
+
+h1.dark {
+    color: var(--color-texto-dark);
+}
+
+h2.light {
+    color: var(--color-texto);
+}
+
+h2.dark {
+    color: var(--color-texto-dark);
+}
+
+p.light {
+    color: var(--color-texto);
+}
+
+p.dark {
+    color: var(--color-texto-dark);
+}
+
+div.light {
+    color: var(--color-texto);
+}
+
+div.dark {
+    color: var(--color-texto-dark);
+}
+
+
+
